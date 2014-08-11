@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html class="ie ie6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie ie7 no-js" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie ie8 no-js" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie ie9 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<title>Sobranie</title>
+
+		<meta name="viewport" content="user-scalable=1.0,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="format-detection" content="telephone=no">
+		
+		<link rel="stylesheet" type="text/css" href="demo.css" tppabs="http://zzzpiu.com/envato/shufflepuzzle/css/demo.css" />
+		<script type="text/javascript" src="jquery-1.6.1.min.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/js/jquery-1.6.1.min.js"></script>
+		<script type="text/javascript" src="jscolor.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/jscolor/jscolor.js"></script>
+		<link rel="stylesheet" href="style.css" tppabs="http://zzzpiu.com/envato/shufflepuzzle/css/style.css" type="text/css" media="screen">
+		<link rel="stylesheet" href="jNotify.jquery.css" tppabs="http://zzzpiu.com/envato/shufflepuzzle/css/jNotify.jquery.css" type="text/css" media="screen">
+		<script type="text/javascript" src="jquery.shufflepuzzle.mic.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/js/jquery.shufflepuzzle.mic.js"></script>
+		<script type="text/javascript" src="jNotify.jquery.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/js/jNotify.jquery.js"></script>		
+	</head>
+	<body>
+		<div class="container">
+			<section>
+			<script type="text/javascript">
+				$(window).load(function() {		
+
+
+					$(document).bind('touchmove', false);
+				
+					$("#t1").click(function(){
+						var config = {
+							img_puzzle:		'puzzle.jpg'/*tpa=http://zzzpiu.com/envato/shufflepuzzle/img/puzzle.jpg*/,
+							tilesH:		parseInt($('input[name=tilesH]').val()),
+							tilesV:	parseInt($('input[name=tilesV]').val()),
+							gap:			$('#gap').is(':checked'),						
+							duration:		parseInt($('input[name=duration]').val()),
+							bgColor:		$('input[name=bgColor]').val(),
+							bgOpacity:		parseFloat($('input[name=bgOpacity]').val()),
+							imgBgOpacity:	parseFloat($('input[name=imgBgOpacity]').val()),
+							shuffleNum:		parseInt($('input[name=shuffleNum]').val()),
+							shuffleSpeed:	parseInt($('input[name=shuffleSpeed]').val()),
+							menuVisible:	$('#menuVisible').is(':checked')
+						}		
+						$('#cont').html('').append("<div id='Puzzle'></div>");
+						$('#Puzzle').shufflepuzzle(config);
+					});	
+					$('#Puzzle').shufflepuzzle({
+						tilesH:3,
+						tilesV:	3,
+						menuVisible: false
+					});
+				});
+				
+			</script>
+			<div id="cont">
+				<div id="Puzzle"></div>
+			</div>
+			
+			<!--
+			<div id="sett">
+					<table class="settings" style="width: 300px; margin: 0 0 0 10px; background: none repeat scroll 0 0 rgba(230,230,230,0.5)">
+						<tbody>
+							<tr>
+								<td width="250" style="font-size: 14px; font-weight: bold"><h2><b>Main Settings</b></h2><hr size=2></td>
+							</tr>
+							<tr>
+								<td>Number of tiles in the width:</td>
+								<td><input type="text" name="tilesH" value="4" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Number of tiles in the height:</td>
+								<td><input type="text" name="tilesV" value="4" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Gap between the tiles:</td>
+								<td><input id="gap" type="checkbox" value="true" checked/></td>
+							</tr>
+							<tr>
+								<td>Duration of moving a tile by pressing:</td>
+								<td><input type="text" name="duration" value="100" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Background Color:</td>
+								<td width="180" ><input class="color {hash:true}" name="bgColor" value="#ffffff" size="6"></td>
+								
+							</tr>
+							<tr>
+								<td>Background Opacity:</td>
+								<td><input type="text" name="bgOpacity" value="1" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Image Opacity:</td>
+								<td><input type="text" name="imgBgOpacity" value=".5" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Shuffle Number:</td>
+								<td><input type="text" name="shuffleNum" value="10" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Shuffle Speed:</td>
+								<td><input type="text" name="shuffleSpeed" value="60" size="6" /></td>
+							</tr>
+							<tr>
+								<td>Menu Visible:</td>
+								<td><input id="menuVisible" type="checkbox" value="true" checked/></td>
+							</tr>
+							</tbody>
+						</table>
+						<nav class="codrops-demos" style="text-align:right">
+							<a id="t1" name="t1">Apply</a>
+						<nav>
+					<br>
+				</div>
+			-->
+			</section>
+			
+		</div>
+
+	</body>
+</html>

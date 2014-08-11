@@ -1,0 +1,60 @@
+#puzzle-navigation {
+	list-style: none; 
+	margin: 0; 
+	padding: 0;
+	white-space: nowrap;
+	margin: 0;
+	padding: 0;
+	display: inline-block;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAA1BMVEUAAACnej3aAAAAAXRSTlO4hVzj2AAAAA1JREFUeNoBAgD9/wAAAAIAAVMrnDAAAAAASUVORK5CYII=);
+}
+
+ul#puzzle-navigation li {
+	float: left;
+	list-style: none;
+	border-right: 1px solid #4f4f4f;
+	position: relative;
+	padding: 2px 5px;
+	height: 18px;
+	font-family: "Century Gothic", Verdana, Arial, Sans-Serif;
+	font-size: 11px;
+	cursor: pointer;
+	-webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul#puzzle-navigation li:hover {
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAMAAAAoyzS7AAAAA1BMVEUAAACnej3aAAAAAXRSTlO4hVzj2AAAAA1JREFUeNoBAgD9/wAAAAIAAVMrnDAAAAAASUVORK5CYII=);
+}
+
+
+ul#puzzle-navigation li ul {
+	display: none;
+}
+
+ul#puzzle-navigation li:hover ul {
+	display: block;
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	top: 18px;
+	left: 0;
+	background-color: #2b2b2b;
+	z-index: 1000;
+}
+
+ul#puzzle-navigation li:hover ul li {
+	float: none;
+	border-right: none;
+}
+
+ul#puzzle-navigation li:hover ul li {
+	border-top: 1px solid #4f4f4f;
+}
+
+ul#puzzle-navigation li:hover ul li:hover {
+	background-color: white;
+	border-top: 1px solid white;
+	color: #fff;
+}

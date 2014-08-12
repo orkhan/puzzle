@@ -13,50 +13,177 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="format-detection" content="telephone=no">
 		
-		<link rel="stylesheet" type="text/css" href="demo.css" tppabs="http://zzzpiu.com/envato/shufflepuzzle/css/demo.css" />
-		<script type="text/javascript" src="jquery-1.6.1.min.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/js/jquery-1.6.1.min.js"></script>
-		<script type="text/javascript" src="jscolor.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/jscolor/jscolor.js"></script>
-		<link rel="stylesheet" href="style.css" tppabs="http://zzzpiu.com/envato/shufflepuzzle/css/style.css" type="text/css" media="screen">
-		<link rel="stylesheet" href="jNotify.jquery.css" tppabs="http://zzzpiu.com/envato/shufflepuzzle/css/jNotify.jquery.css" type="text/css" media="screen">
-		<script type="text/javascript" src="jquery.shufflepuzzle.mic.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/js/jquery.shufflepuzzle.mic.js"></script>
-		<script type="text/javascript" src="jNotify.jquery.js" tppabs="http://zzzpiu.com/envato/shufflepuzzle/js/jNotify.jquery.js"></script>		
+		<link rel="stylesheet" type="text/css" href="style/style.css"  />
+		<script type="text/javascript" src="js/jquery-1.6.1.min.js" ></script>
+		<script type="text/javascript" src="js/jscolor.js" ></script>
+		
+		<script type="text/javascript">
+			
+			
+			var sec = 59;
+			var timer = null;
+			var w = parseInt($(".l_top").width())
+
+			
+			function reset(){
+				clearInterval(timer);
+				sec=59;
+				$(".l_top").css("width",0)
+			}
+			
+			function startInterval(){
+				timer = setInterval(function(){
+					$('.first_int').text("0")
+					$('.counter_down').text(sec--);
+					var iP = parseInt(555/59)
+					
+					$(".l_top").css("width","+="+iP)
+
+					if (sec == -1) {
+						$(".l_top").css("width","555px")
+						
+						
+						
+						$(".bad_alert").show()
+						$(".alert").fadeIn()
+						$(".timer").removeClass("show")
+						
+						
+						
+						reset();
+						clearInterval(timer);
+					} 
+				}, 1000);
+			}
+			
+			function stopInterval(){
+				clearInterval(timer);
+			}
+			
+			$(window).load(function() {		
+				$(document).bind('touchmove', false);
+				
+				
+				
+				$(".start").click(function(){
+					var pV = $(".pass_input").val()
+					if(pV == "123456"){
+						$(".pre_image").fadeOut(function(){
+							$(".timer").addClass("show")
+							var config = {
+								img_puzzle:		'puzzle.jpg'/*tpa=http://zzzpiu.com/envato/shufflepuzzle/img/puzzle.jpg*/,
+								tilesH:		3,
+								tilesV:	3,
+								bgColor: "#000000",
+								imgBgOpacity: 0.05,
+								shuffleNum:8,
+								menuVisible: false
+							}		
+							$('.cont').html('').append("<div id='Puzzle'></div>");
+							$('#Puzzle').shufflepuzzle(config);
+							
+							startInterval()
+						})
+					}
+					
+					
+					
+					
+					
+				});	
+				
+				
+				$(".try").click(function(){
+					$('.first_int').text("1")
+					$('.counter_down').text("00");
+					$(".l_top").css("width",0)
+					
+					$(".alert").fadeOut(function(){
+						$(".good_alert").hide()
+						$(".bad_alert").hide()
+					})
+
+					$(".timer").addClass("show")
+					var config = {
+						img_puzzle:		'puzzle.jpg'/*tpa=http://zzzpiu.com/envato/shufflepuzzle/img/puzzle.jpg*/,
+						tilesH:		3,
+						tilesV:	3,
+						bgColor: "#000000",
+						imgBgOpacity: 0.05,
+						shuffleNum:8,
+						menuVisible: false
+					}		
+					$('.cont').html('').append("<div id='Puzzle'></div>");
+					$('#Puzzle').shufflepuzzle(config);
+
+					
+					startInterval()
+					
+					
+				});
+
+				
+				
+			});
+			
+		</script>
+		
+		
+		
+		<script type="text/javascript" src="js/jquery.shufflepuzzle.mic.js"></script>
+		<script type="text/javascript" src="js/jNotify.jquery.js"></script>		
 	</head>
+	
+	
+	
+	
 	<body>
+
 		<div class="container">
 			<section>
-			<script type="text/javascript">
-				$(window).load(function() {		
 
-
-					$(document).bind('touchmove', false);
-				
-					$("#t1").click(function(){
-						var config = {
-							img_puzzle:		'puzzle.jpg'/*tpa=http://zzzpiu.com/envato/shufflepuzzle/img/puzzle.jpg*/,
-							tilesH:		parseInt($('input[name=tilesH]').val()),
-							tilesV:	parseInt($('input[name=tilesV]').val()),
-							gap:			$('#gap').is(':checked'),						
-							duration:		parseInt($('input[name=duration]').val()),
-							bgColor:		$('input[name=bgColor]').val(),
-							bgOpacity:		parseFloat($('input[name=bgOpacity]').val()),
-							imgBgOpacity:	parseFloat($('input[name=imgBgOpacity]').val()),
-							shuffleNum:		parseInt($('input[name=shuffleNum]').val()),
-							shuffleSpeed:	parseInt($('input[name=shuffleSpeed]').val()),
-							menuVisible:	$('#menuVisible').is(':checked')
-						}		
-						$('#cont').html('').append("<div id='Puzzle'></div>");
-						$('#Puzzle').shufflepuzzle(config);
-					});	
-					$('#Puzzle').shufflepuzzle({
-						tilesH:3,
-						tilesV:	3,
-						menuVisible: false
-					});
-				});
-				
-			</script>
-			<div id="cont">
+			
+			<div class="alert">
+				<div class="good_alert">
+					<div class="text_alert_good">
+						<h1>Congratulations</h1>
+						<h3>You won</h3>
+					</div>
+					<a href="javascript:void(0)" class="try"><p>TRY AGAIN</p></a>
+				</div>
+				<div class="bad_alert">
+					<div class="text_alert_good">
+						<h1>Sorry</h1>
+						<h3>You lose</h3>
+					</div>
+					<a href="javascript:void(0)" class="try"><p>TRY AGAIN</p></a>
+				</div>
+				<span></span>
+			</div>
+			
+			<div class="pre_image">
+				<input type="password" class="pass_input" placeholder="Type password" />
+				<a href="javascript:void(0)" class="start"><p>Start game</p></a>
+				<span></span>
+				<img src="puzzle1.jpg" />
+			</div>
+			<div class="cont">
 				<div id="Puzzle"></div>
+			</div>
+			
+			<div class="b_image">
+				<img src="puzzle1.jpg" />
+			</div>
+			<div class="timer">
+				<div class="timer_self">
+					<div class="timer_line">
+						<div class="line">
+							<span class="l_top"></span>
+							<span class="l_bot"></span>
+						</div>
+					</div>
+					<div class="counter_wrapper"><span class="first_int">1</span>:<span class="counter_down">00</span></div>
+				</div>
 			</div>
 			
 			<!--
